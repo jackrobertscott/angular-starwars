@@ -1,0 +1,317 @@
+/**
+ * Variables
+ */
+$bg: #171b1b;
+$lift: lighten($bg, 10%);
+$drop: darken($bg, 4%);
+$tint: #e5df42;
+$light: lighten($lift, 60%);
+
+/**
+ * Imports
+ */
+@import url(https://fonts.googleapis.com/css?family=Monoton);
+
+/**
+ * Mixins
+ */
+@mixin gear($width, $space, $color) {
+  border-color: $color;
+  border-width: $width;
+  border-radius: 100%;
+  position: absolute;
+  left: $space;
+  right: $space;
+  top: $space;
+  bottom: $space;
+}
+@mixin border-styles($top, $left, $bottom, $right) {
+  border-top-style: $top;
+  border-left-style: $left;
+  border-bottom-style: $bottom;
+  border-right-style: $right;
+}
+
+/**
+ * Animations
+ */
+@keyframes rotate {
+  0%   {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/**
+ * Styles
+ */
+*:focus {
+  outline: none;
+}
+body {
+  background-color: $bg;
+}
+
+#login {
+  width: 500px;
+  height: 500px;
+  margin: 100px auto 0;
+  position: relative;
+  .outer {
+    @include gear(10px, 0, $tint);
+    @include border-styles(solid, dotted, solid, dashed);
+    animation: rotate 20s infinite;
+  }
+  .mid {
+    @include gear(15px, 20px, $tint);
+    @include border-styles(dashed, dashed, double, double);
+    animation: rotate 10s infinite reverse;
+  }
+  .inner {
+    @include gear(10px, 45px, $tint);
+    @include border-styles(dotted, dotted, solid, solid);
+    animation: rotate 10s infinite;
+  }
+  .content {
+    position: relative;
+  }
+  .title {
+    color: $tint;
+    font-family: 'Monoton', cursive;
+    text-align: center;
+    font-size: 34px;
+    padding-top: 140px;
+    padding-bottom: 10px;
+  }
+  input {
+    width: 260px;
+    padding: 10px;
+    background-color: $drop;
+    border: 1px solid $lift;
+    border-radius: 5px;
+    margin: 10px auto 0;
+    display: block;
+    color: $light;
+    &::placeholder {
+      color: lighten($lift, 15%);
+    }
+  }
+  button {
+    margin: 30px auto 0;
+    display: block;
+    height: 40px;
+    width: 100px;
+    border: none;
+    background-color: $lift;
+    font-size: 14px;
+    color: $light;
+    &:hover {
+      background-color: lighten($lift, 5%);
+    }
+  }
+}
+
+header {
+  padding: 10px 0 0;
+  background-color: $lift;
+  h1 {
+    font-weight: normal;
+    font-size: 70px;
+    line-height: 80px;
+    text-align: center;
+    color: $tint;
+    font-family: 'Monoton', cursive;
+  }
+  .cutout {
+    width: 600px;
+    height: 20px;
+    background-color: $bg;
+    margin: 40px auto 0;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+}
+
+nav.search {
+  input {
+    width: 768px;
+    margin: 70px auto 50px;
+    display: block;
+    padding: 16px;
+    font-size: 22px;
+    border: 1px solid $tint;
+    background-color: $drop;
+    color: $tint;
+    focus: none;
+  }
+}
+
+section.list
+  margin-bottom: 50px;
+  .subtitle {
+    font-family: 'Monoton', cursive;
+    font-size: 40px;
+    color: $tint;
+    width: 800px;
+    margin: 0 auto 20px;
+  }
+  .left, .right {
+    width: 95px;
+    height: 300px;
+    display: inline-block;
+    font-family: 'Monoton', cursive;
+    font-size: 100px;
+    color: $tint;
+    vertical-align: top;
+    cursor: pointer;
+    p {
+      margin: 75px 0;
+    }
+  }
+  .right {
+    text-align: right;
+  }
+  .slider {
+    margin: 0 auto;
+    width: 1000px;
+    .box {
+      width: 800px;
+      height: 300px;
+      overflow: hidden;
+      display: inline-block;
+    }
+    ul {
+      padding: 0;
+      margin: 0;
+      width: 10000px;
+      li {
+        padding: 0;
+        margin: 0;
+        width: 250px;
+        background-color: $lift;
+        list-style: none;
+        float: left;
+        margin-right: 25px;
+        &:hover {
+          background-color: lighten($lift, 3%);
+        }
+      }
+      .disp {
+        height: 60px;
+        width: 100px;
+        padding: 20px 0;
+        font-size: 50px;
+        text-align: center;
+        color: $light;
+        border: 5px $light double;
+        border-radius: 100%;
+        margin: 50px auto;
+      }
+      .name {
+        border-top: 1px solid $tint;
+        padding: 20px 20px 0;
+        font-size: 20px;
+        color: $light;
+      }
+      .detail {
+        padding: 10px 20px;
+        font-size: 16px;
+        color: darken($light, 10%);
+      }
+      .cutout {
+        height: 10px;
+        width: 50px;
+        background-color: $bg;
+        margin-left: 180px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+      }
+    }
+  }
+}
+
+footer {
+  background-color: $lift;
+  color: $tint;
+  font-size: 14px;
+  margin-top: 80px;
+  .center {
+    width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  .cutout {
+    height: 20px;
+    width: 300px;
+    background-color: $bg;
+    float: right;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  .author {
+    padding: 20px 0;
+    float: left;
+  }
+}
+
+.back {
+  width: 800px;
+  margin: 30px auto;
+  border-bottom: 1px solid darken($light, 30%);
+  color: darken($light, 30%);
+  padding: 20px 0 10px;
+}
+
+.detail {
+  width: 800px;
+  margin: 0 auto;
+  position: relative;
+  .title {
+    font-family: 'Monoton', cursive;
+    font-size: 40px;
+    color: $tint;
+  }
+  .content {
+    width: 100%;
+    background-color: $lift;
+    color: $light;
+    margin-top: 10px;
+  }
+  .mid {
+    margin: 14px 0;
+    width: 100%;
+    height: 4px;
+    background-color: $bg;
+    .cutout {
+      width: 14px;
+      height: 14px;
+      border-radius: 100%;
+      background-color: $bg;
+      float: left;
+      margin-left: 20px;
+      margin-top: -5px;
+    }
+  }
+  ul {
+    padding: 0;
+    margin: 0;
+    li {
+      list-style: none;
+      padding: 14px 0;
+      margin: 0 14px;
+      overflow: hidden;
+      border-bottom: 1px solid lighten($lift, 10%);
+      .left {
+        float: left;
+      }
+      .right {
+        float: right;
+      }
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}

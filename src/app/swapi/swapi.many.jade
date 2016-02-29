@@ -1,0 +1,74 @@
+//
+  <ul>
+    <li ng-repeat="swapi in vm.swapis">
+      <a ng-click="vm.inspect(swapi.$id)">{{ swapi.name }}</a>
+    </li>
+  </ul>
+  <form name="form" ng-submit="vm.save(form)">
+    <div class="name">
+      <input name="name" ng-model="vm.swapi.name" placeholder="Name" required="required" type="text"/>
+      <div class="error" ng-show="form.name.$invalid &amp;&amp; form.name.$touched">
+        <p>Please enter a name</p>
+      </div>
+    </div>
+    <button ng-disabled="form.$invalid" type="submit">Save</button>
+    <button ng-click="vm.remove()" ng-show="vm.swapi.$id">Remove</button>
+    <button ng-click="vm.create()">New</button>
+  </form>
+
+nav.search
+  input(type="text",placeholder="Search...")
+
+section.list
+  .subtitle
+    | People
+  .slider
+    .left
+      p <
+    .box
+      ul
+        - for (var i = 0; i < 5; i++)
+          a(href="#")
+            li
+              .disp LS
+              .name Luke Skywalker
+              .detail 19 BBY
+              .cutout
+    .right
+      p >
+
+section.list
+  .subtitle
+    | Starships
+  .slider
+    .left
+      p <
+    .box
+      ul
+        - for (var i = 0; i < 5; i++)
+          a(href="#")
+            li
+              .disp DS
+              .name Death Star
+              .detail 10 MGLT
+              .cutout
+    .right
+      p >
+
+section.list
+  .subtitle
+    | Planets
+  .slider
+    .left
+      p <
+    .box
+      ul
+        - for (var i = 0; i < 5; i++)
+          a(href="#")
+            li
+              .disp T
+              .name Tatooine
+              .detail Arid
+              .cutout
+    .right
+      p >

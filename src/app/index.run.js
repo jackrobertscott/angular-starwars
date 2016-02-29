@@ -21,5 +21,32 @@
         $state.go('main');
       }
     });
+
+    /**
+     * jQuery code for dashboard sliders
+     */
+    var _on = false;
+    $('.left').click(function() {
+      var _rent = $(this).parent().find('ul');
+      var _num = _rent.children().length;
+      var _pos = parseInt(_rent.css('margin-left'), 10);
+      if (!_on && _pos + (_num * 275) - 825 > 0) {
+        _on = true;
+        _rent.animate({'margin-left': '-=275px'}, function() {
+          _on = false;
+        });
+      }
+    });
+    $('.right').click(function() {
+      var _rent = $(this).parent().find('ul');
+      var _num = _rent.children().length;
+      var _pos = parseInt(_rent.css('margin-left'), 10);
+      if (!_on && _pos < 0) {
+        _on = true;
+        _rent.animate({'margin-left': '+=275px'}, function() {
+          _on = false;
+        });
+      }
+    });
   }
 })();
