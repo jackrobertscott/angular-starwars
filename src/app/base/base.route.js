@@ -24,10 +24,8 @@
       });
 
     /** @ngInject */
-    function currentAuth(Auth, FIREBASE_ROOT) {
-      var auth = Auth.get(FIREBASE_ROOT);
-
-      return auth.$waitForAuth();
+    function currentAuth(Auth) {
+      return Auth.getUser();
     }
   }
 })();

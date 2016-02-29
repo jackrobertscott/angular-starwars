@@ -31,8 +31,8 @@
             email: data.email,
             password: data.password,
           })
-          .then(function(authData) {
-            // $log.log('logged in: ' + authData.uid);
+          .then(function(user) {
+            $log.debug('Logged in user: ' + user.email);
             $state.go('base.swapi');
           })
           .catch(util.failure);

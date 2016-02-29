@@ -6,8 +6,7 @@
     .factory('Auth', Auth);
 
   /** @ngInject */
-  function Auth(Firebase, $firebaseAuth) {
-    var _user;
+  function Auth($cookies) {
     var _users = [{
       email: 'admin@email.com',
       password: 'admin',
@@ -15,6 +14,7 @@
 
     var service = {
       login: login,
+      logout: logout,
       getUser: getUser,
     };
 
@@ -24,22 +24,22 @@
       return new Promise(function(res, rej) {
         if (!data.email) return rej(Error('Email not given.'));
         if (!data.password) return rej(Error('Password not given.'));
-        console.log(user);
 
         _users.forEach(function(user) {
           if (user.email == data.email && user.password == data.password) {
-            _user = user;
+            $cookies.putObject('auth', user);
             res(user);
-            console.log(user);
           }
         });
-
-        // return rej('User not found.');
       });
     }
 
+    function logout() {
+      $cookies.remove('auth');
+    }
+
     function getUser() {
-      return _user;
+      return $cookies.getObject('auth');
     }
   }
 })();
