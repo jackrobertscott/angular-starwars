@@ -12,10 +12,8 @@
   /** @ngInject */
   function checkAuth($log, $rootScope, $state, Auth, FIREBASE_ROOT) {
     $rootScope.$on('$stateChangeStart', function(event, toState) {
-      var auth = Auth.get(FIREBASE_ROOT);
-
       // If the state requires authetication and not logged in then redirect
-      if (toState.data && toState.data.authenticate && !auth.$getAuth()) {
+      if (toState.data && toState.data.authenticate && !Auth.getUser()) {
         event.preventDefault();
         $log.error('Access denied: page requires user to be authenticated');
         $state.go('main');

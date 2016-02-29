@@ -57,8 +57,10 @@ body {
 #login {
   width: 500px;
   height: 500px;
-  margin: 100px auto 0;
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -250px 0 0 -250px;
   .outer {
     @include gear(10px, 0, $tint);
     @include border-styles(solid, dotted, solid, dashed);
@@ -94,6 +96,7 @@ body {
     margin: 10px auto 0;
     display: block;
     color: $light;
+    font-size: 16px;
     &::placeholder {
       color: lighten($lift, 15%);
     }
@@ -107,6 +110,7 @@ body {
     background-color: $lift;
     font-size: 14px;
     color: $light;
+    cursor: pointer;
     &:hover {
       background-color: lighten($lift, 5%);
     }
@@ -148,7 +152,7 @@ nav.search {
   }
 }
 
-section.list
+section.list {
   margin-bottom: 50px;
   .subtitle {
     font-family: 'Monoton', cursive;
