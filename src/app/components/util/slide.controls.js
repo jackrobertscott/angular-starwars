@@ -3,10 +3,10 @@
 
   angular
     .module('ng-swapi')
-    .directive('slideLeft', slideLeft);
+    .directive('slideRight', slideRight);
 
   /* @ngInject */
-  function slideLeft() {
+  function slideRight() {
     var directive = {
       restrict: 'A',
       link: linkFunc,
@@ -41,10 +41,10 @@
 
   angular
     .module('ng-swapi')
-    .directive('slideRight', slideRight);
+    .directive('slideLeft', slideLeft);
 
   /* @ngInject */
-  function slideRight() {
+  function slideLeft() {
     var directive = {
       restrict: 'A',
       link: linkFunc,

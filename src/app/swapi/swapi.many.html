@@ -15,52 +15,22 @@
   <button ng-click="vm.create()">New</button>
 </form>
 -->
-<nav class="search"><input type="text" placeholder="Search..."/></nav>
+<nav class="search">
+  <input type="text" placeholder="Search..."/ ng-model="searchFilter">
+</nav>
 <section class="list">
-  <div class="subtitle">People</div>
+  <div class="subtitle">People - {{vm.people.count}}</div>
   <div class="slider">
-    <div class="left"  slide-left>
+    <div class="left" slide-left>
       <p>&#60;</p>
     </div>
     <div class="box">
       <ul>
-        <a href="#">
+        <a href="#" ng-repeat="person in vm.people.results | filter: searchFilter">
           <li>
-            <div class="disp">LS</div>
-            <div class="name">Luke Skywalker</div>
-            <div class="detail">19 BBY</div>
-            <div class="cutout"></div>
-          </li>
-        </a>
-        <a href="#">
-          <li>
-            <div class="disp">LS</div>
-            <div class="name">Luke Skywalker</div>
-            <div class="detail">19 BBY</div>
-            <div class="cutout"></div>
-          </li>
-        </a>
-        <a href="#">
-          <li>
-            <div class="disp">LS</div>
-            <div class="name">Luke Skywalker</div>
-            <div class="detail">19 BBY</div>
-            <div class="cutout"></div>
-          </li>
-        </a>
-        <a href="#">
-          <li>
-            <div class="disp">LS</div>
-            <div class="name">Luke Skywalker</div>
-            <div class="detail">19 BBY</div>
-            <div class="cutout"></div>
-          </li>
-        </a>
-        <a href="#">
-          <li>
-            <div class="disp">LS</div>
-            <div class="name">Luke Skywalker</div>
-            <div class="detail">19 BBY</div>
+            <div class="disp">{{vm.initials(person.name) | limitTo: 2}}</div>
+            <div class="name">{{person.name | limitTo: 22}}</div>
+            <div class="detail">{{person.birth_year}}</div>
             <div class="cutout"></div>
           </li>
         </a>
@@ -72,50 +42,18 @@
   </div>
 </section>
 <section class="list">
-  <div class="subtitle">Starships</div>
+  <div class="subtitle">Starships - {{vm.starships.count}}</div>
   <div class="slider">
     <div class="left" slide-left>
       <p>&#60;</p>
     </div>
     <div class="box">
       <ul>
-        <a href="#">
+        <a href="#" ng-repeat="starship in vm.starships.results | filter: searchFilter">
           <li>
-            <div class="disp">DS</div>
-            <div class="name">Death Star</div>
-            <div class="detail">10 MGLT</div>
-            <div class="cutout"></div>
-          </li>
-        </a>
-        <a href="#">
-          <li>
-            <div class="disp">DS</div>
-            <div class="name">Death Star</div>
-            <div class="detail">10 MGLT</div>
-            <div class="cutout"></div>
-          </li>
-        </a>
-        <a href="#">
-          <li>
-            <div class="disp">DS</div>
-            <div class="name">Death Star</div>
-            <div class="detail">10 MGLT</div>
-            <div class="cutout"></div>
-          </li>
-        </a>
-        <a href="#">
-          <li>
-            <div class="disp">DS</div>
-            <div class="name">Death Star</div>
-            <div class="detail">10 MGLT</div>
-            <div class="cutout"></div>
-          </li>
-        </a>
-        <a href="#">
-          <li>
-            <div class="disp">DS</div>
-            <div class="name">Death Star</div>
-            <div class="detail">10 MGLT</div>
+            <div class="disp">{{vm.initials(starship.name) | limitTo: 2}}</div>
+            <div class="name">{{starship.name | limitTo: 22}}</div>
+            <div class="detail">Speed: {{starship.max_atmosphering_speed}}</div>
             <div class="cutout"></div>
           </li>
         </a>
@@ -127,50 +65,18 @@
   </div>
 </section>
 <section class="list">
-  <div class="subtitle">Planets</div>
+  <div class="subtitle">Planets - {{vm.planets.count}}</div>
   <div class="slider">
     <div class="left" slide-left>
       <p>&#60;</p>
     </div>
     <div class="box">
       <ul>
-        <a href="#">
+        <a href="#" ng-repeat="planet in vm.planets.results | filter: searchFilter">
           <li>
-            <div class="disp">T</div>
-            <div class="name">Tatooine</div>
-            <div class="detail">Arid</div>
-            <div class="cutout"></div>
-          </li>
-        </a>
-        <a href="#">
-          <li>
-            <div class="disp">T</div>
-            <div class="name">Tatooine</div>
-            <div class="detail">Arid</div>
-            <div class="cutout"></div>
-          </li>
-        </a>
-        <a href="#">
-          <li>
-            <div class="disp">T</div>
-            <div class="name">Tatooine</div>
-            <div class="detail">Arid</div>
-            <div class="cutout"></div>
-          </li>
-        </a>
-        <a href="#">
-          <li>
-            <div class="disp">T</div>
-            <div class="name">Tatooine</div>
-            <div class="detail">Arid</div>
-            <div class="cutout"></div>
-          </li>
-        </a>
-        <a href="#">
-          <li>
-            <div class="disp">T</div>
-            <div class="name">Tatooine</div>
-            <div class="detail">Arid</div>
+            <div class="disp">{{vm.initials(planet.name) | limitTo: 2}}</div>
+            <div class="name">{{planet.name | limitTo: 22}}</div>
+            <div class="detail">Diameter: {{planet.diameter}}</div>
             <div class="cutout"></div>
           </li>
         </a>
