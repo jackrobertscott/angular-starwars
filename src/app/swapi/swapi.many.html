@@ -26,7 +26,7 @@
     </div>
     <div class="box">
       <ul>
-        <a href="#" ng-repeat="person in vm.people.results | filter: searchFilter">
+        <a ui-sref="base.person({id: id})" ng-repeat="(id, person) in vm.people.results | filter: searchFilter">
           <li>
             <div class="disp">{{vm.initials(person.name) | limitTo: 2}}</div>
             <div class="name">{{person.name | limitTo: 22}}</div>
@@ -49,7 +49,7 @@
     </div>
     <div class="box">
       <ul>
-        <a href="#" ng-repeat="starship in vm.starships.results | filter: searchFilter">
+        <a ui-sref="base.starship({id: id})" ng-repeat="(id, starship) in vm.starships.results | filter: searchFilter">
           <li>
             <div class="disp">{{vm.initials(starship.name) | limitTo: 2}}</div>
             <div class="name">{{starship.name | limitTo: 22}}</div>
@@ -72,7 +72,7 @@
     </div>
     <div class="box">
       <ul>
-        <a href="#" ng-repeat="planet in vm.planets.results | filter: searchFilter">
+        <a ui-sref="base.planet({id: id})" ng-repeat="(id, planet) in vm.planets.results | filter: searchFilter">
           <li>
             <div class="disp">{{vm.initials(planet.name) | limitTo: 2}}</div>
             <div class="name">{{planet.name | limitTo: 22}}</div>

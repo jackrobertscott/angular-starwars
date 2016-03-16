@@ -9,7 +9,7 @@
 
   /* @ngInject */
   function Starship($resource) {
-    return $resource('http://swapi.co/api/starships/:id', {
+    return $resource('http://swapi.co/api/starships/:id/', {
       id: '@id'
     });
   }

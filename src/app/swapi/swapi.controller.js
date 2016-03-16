@@ -6,7 +6,7 @@
     .controller('SwapiController', SwapiController);
 
   /** @ngInject */
-  function SwapiController($log, currentAuth, util, People, Planet, Starship) {
+  function SwapiController($log, currentAuth, util, People, Planet, Starship, $stateParams, $state) {
     var vm = this;
 
     vm.swapi = null;
@@ -16,6 +16,7 @@
     vm.planets = null;
     vm.starships = null;
     vm.initials = initials;
+    vm.current = null;
 
     activate();
 
@@ -25,9 +26,21 @@
     function activate() {
       util.reset();
 
-      vm.people = People.get();
-      vm.planets = Planet.get();
-      vm.starships = Starship.get();
+      if (!$stateParams.id) {
+        vm.people = People.get();
+        vm.planets = Planet.get();
+        vm.starships = Starship.get();
+      } else {
+        if ($state.is('base.person')) {
+          vm.current = People.get({id: $stateParams.id});
+        } else if ($state.is('base.planet')) {
+          vm.current = Planet.get({id: $stateParams.id});
+        } else if ($state.is('base.starship')) {
+          vm.current = Starship.get({id: $stateParams.id});
+        } else {
+          $log.error('Id not set!');
+        }
+      }
     }
 
     function initials(str) {

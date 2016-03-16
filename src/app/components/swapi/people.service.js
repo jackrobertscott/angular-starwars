@@ -9,7 +9,7 @@
 
   /* @ngInject */
   function People($resource) {
-    return $resource('http://swapi.co/api/people/:id', {
+    return $resource('http://swapi.co/api/people/:id/', {
       id: '@id'
     });
   }
